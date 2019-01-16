@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using packtWebapp.Repositories;
+using packtWebapp.Dtos;
 using packtWebapp.Entities;
 using packtWebapp.Middlewares;
+using packtWebapp.Repositories;
+using packtWebapp.Services;
+using System.IO;
 
 namespace packtWebapp
 {
@@ -24,13 +21,10 @@ namespace packtWebapp
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
+                .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json");
 
             Configuration = builder.Build();
-
-            //  Debug.WriteLine($" ---> From Config: {Configuration["firstname"]}");
-            //  Debug.WriteLine($" ---> From Config: {Configuration["withChild:option1"]}");
         }
 
 
@@ -43,6 +37,8 @@ namespace packtWebapp
             services.AddDbContext<PacktDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ISeedDataService, SeedDataService>();
+
             services.AddMvc();
         }
 
@@ -64,7 +60,14 @@ namespace packtWebapp
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseCustomMiddleware();
+            AutoMapper.Mapper.Initialize(mapper =>
+            {
+                mapper.CreateMap<Customer, CustomerDto>().ReverseMap();
+                mapper.CreateMap<Customer, CustomerCreateDto>().ReverseMap();
+                mapper.CreateMap<Customer, CustomerUpdateDto>().ReverseMap();
+            });
+
+            app.AddSeedData();
 
             app.UseMvc();
         }

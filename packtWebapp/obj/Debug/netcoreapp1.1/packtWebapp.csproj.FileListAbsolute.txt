@@ -1,0 +1,10 @@
+C:\Users\pschlur\Source\Repos\PacktWebapp\packtWebapp\obj\Debug\netcoreapp1.1\packtWebapp.csproj.CoreCompileInputs.cache
+C:\Users\pschlur\Source\Repos\PacktWebapp\packtWebapp\obj\Debug\netcoreapp1.1\packtWebapp.AssemblyInfoInputs.cache
+C:\Users\pschlur\Source\Repos\PacktWebapp\packtWebapp\obj\Debug\netcoreapp1.1\packtWebapp.AssemblyInfo.cs
+C:\Users\pschlur\Source\Repos\PacktWebapp\packtWebapp\bin\Debug\netcoreapp1.1\packtWebapp.deps.json
+C:\Users\pschlur\Source\Repos\PacktWebapp\packtWebapp\bin\Debug\netcoreapp1.1\packtWebapp.runtimeconfig.json
+C:\Users\pschlur\Source\Repos\PacktWebapp\packtWebapp\bin\Debug\netcoreapp1.1\packtWebapp.runtimeconfig.dev.json
+C:\Users\pschlur\Source\Repos\PacktWebapp\packtWebapp\bin\Debug\netcoreapp1.1\packtWebapp.dll
+C:\Users\pschlur\Source\Repos\PacktWebapp\packtWebapp\bin\Debug\netcoreapp1.1\packtWebapp.pdb
+C:\Users\pschlur\Source\Repos\PacktWebapp\packtWebapp\obj\Debug\netcoreapp1.1\packtWebapp.dll
+C:\Users\pschlur\Source\Repos\PacktWebapp\packtWebapp\obj\Debug\netcoreapp1.1\packtWebapp.pdb
